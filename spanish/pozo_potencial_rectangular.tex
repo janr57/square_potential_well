@@ -1,0 +1,89 @@
+% pozo_potencial_rectangular.tex
+% Copyright (C) 2013 José A. Navarro josea.navarro@murciaeduca.es
+\documentclass[svgnames,a4paper,notitlepage]{report}
+% Paper dimensions for tikz
+\paperwidth=210mm
+\paperheight=297mm
+\usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage[charter]{mathdesign}
+\usepackage{textcomp}
+\usepackage[final,babel]{microtype}
+
+\usepackage{siunitx}
+%\sisetup{output-decimal-marker = {,}}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage{svg}
+\usepackage{cancel}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{empheq}
+\usepackage{nameref}
+\usepackage{multicol}
+%\usepackage{emptypage}
+%\usepackage{hyperref}
+\usepackage[version=3]{mhchem}
+%\usepackage{chmst-pdf}
+\usepackage{xymtexpdf}
+\usepackage{chemfig}
+\usepackage{chemmacros}
+\usepackage{listings}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.arrows,arrows,backgrounds,positioning,fit,%
+                decorations.pathmorphing,decorations.pathreplacing,%
+		decorations.text,calc,%
+		shapes.geometric,shadows,%
+		pgfplots.groupplots,%
+	        intersections}
+
+\usepackage{pgfplots}
+% background color definition from pgfmanual-en-macros.tex
+\definecolor{graphicbackground1}{rgb}{0.96,0.96,0.8}
+% key to change color
+\pgfkeys{/tikz/.cd,
+	background color/.initial=graphicbackground1,
+	background color/.get=\backcol,
+	background color/.store in=\backcol,
+}
+\tikzset{background rectangle/.style={
+		fill=\backcol,
+	},
+	use background/.style={
+		show background rectangle
+	}
+}
+
+\begin{document}
+
+\title{Partícula En Un Pozo De Potencial Rectangular}
+\author{José A. Navarro Ramón\\
+Murcia, (España)\\
+\texttt{josea.navarro@murciaeduca.es}
+}
+
+\maketitle
+
+\begin{abstract}
+Se analizan los estados posibles en los que se puede encontrar una partícula
+en un pozo de potencial rectangular. También se desarrollan cálculos
+numéricos y se obtienen gráficos.
+\end{abstract}
+
+\tableofcontents
+
+\include{./texto/ecuacion_schrodinger}
+\include{./texto/estados_ligados}
+\include{./texto/estados_no_ligados}
+\include{./texto/solucion_numerica}
+
+\appendix
+\chapter{First Appendix}
+
+\end{document}
+

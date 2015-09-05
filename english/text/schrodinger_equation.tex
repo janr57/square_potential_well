@@ -1,0 +1,828 @@
+\chapter{Schrödinger Equation}
+
+What if we use dimensionless variables? Then we shall need a dimensionless
+Scrödinger equation. Read on.
+
+\section{Dimensionless variables}
+We are going to use a dimensionless reduced position, $x_r$, defined as:
+\begin{equation}
+\label{reduced_x}
+	x_r = \frac{x}{B}
+\end{equation}
+$B$ is a constant with length dimensions.
+
+Likewise, we need a reduced energy, $\epsilon_r$:
+\begin{equation}
+\label{reduced_e}
+	\epsilon_r = \frac{E}{C}
+\end{equation}
+where $C$ is another constant that has dimensions of energy.
+
+Constants $A$ and $B$ must depend on values appearing in the Schrödinger
+equation in one dimension, $x$:
+\begin{equation}
+\label{schro1}
+-\frac{\hbar^2}{2m}\frac{d\psi(x)}{dx^2}+V(x)\psi(x) = E\psi(x)
+\end{equation}
+
+These values are the reduced Planck's constant, $\hbar$, the mass of the
+particle, $m$, and the value of the potential surrounding the well, $V_0$.
+Their respective dimensions are, mass, action and energy:
+\begin{align*}
+&[\hbar] = ML^2T^{-1}\\
+&[m] = M\\
+&[V_0] = ML^2T^{-2}
+\end{align*}
+
+Constant $B$ is a combination of these constants:
+\[
+[B] = \hbar^a m^b V_0^c =
+(ML^2T^{-1})^a (M)^b (ML^2T^{-2})^c =
+M^{a+b+c} L^{2a+2c} T^{-a-2c}
+\]
+
+The exponents $a$, $b$ and $c$ must be calculated knowing that $B$ has only
+length dimensions ($M^0 L^1 T^0$).
+Solving the corresponding system of equations:
+\begin{align*}
+&a + b + c = 0\\
+&2a+2c = 1\\
+&-a-2c = 0
+\end{align*}
+
+Solutions are $a=1$ and $b=c=-1/2$. Thus, $B$ is:
+\begin{equation}
+B = \hbar (mV_0)^{-1/2} = \frac{\hbar}{\sqrt{mV_0}}
+\end{equation}
+
+Constant $C$ is easier: $C=V_0$ as they both have energy dimensions.
+
+So, we have:
+\begin{equation}
+\label{reduced_x2}
+x_r = \frac{x}{B}=\frac{x}{\hbar/\sqrt{mV_0}} = \frac{\sqrt{mV_0}}{\hbar}\,x
+\end{equation}
+
+and
+\begin{equation}
+\label{reduced_e2}
+\epsilon_r = \frac{E}{C}=\frac{E}{V_0}
+\end{equation}
+
+\subsection{Reduced wavefunction and Schrödinger equation}
+Note that $|\psi(x)|^2\,dx$ is a probability, so it has no dimensions. Then,
+the wavefunction, $\psi(x)$, must have $L^{-1/2}$ dimensions.
+
+We can define a reduced wavefunction, $\psi_r$ as:
+\begin{equation}
+\label{reduced_psi}
+\psi_r = \frac{\psi}{B^{-1/2}}
+\end{equation}
+
+Now we are going to get the dimensionless Schrödinger equation from the
+normal one. Transforming \ref{schro1}:
+\begin{equation}
+\label{schro2}
+\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} + (E-V(x))\psi(x) = 0
+\end{equation}
+
+Let's calculate $d\psi(x)/dx$ using \ref{reduced_psi}:
+\[
+\frac{d\psi(x)}{dx}
+= \frac{d}{dx}\, B^{-1/2}\psi_r(x_r)
+= B^{-1/2}\,\frac{d\psi_r(x_r)}{dx}
+= B^{-1/2}\,\frac{d\psi_r(x_r)}{dx_r}\,\frac{dx_r}{dx}
+\]
+
+From \ref{reduced_x} we can calculate $dx_r/dx=B^{-1}$, so:
+\[
+\frac{d\psi(x)}{dx}
+= B^{-1/2}\,\frac{d\psi_r(x_r)}{dx_r}\,B^{-1}
+= B^{-3/2}\,\frac{d\psi_r(x_r)}{dx_r}
+\]
+
+Now, let's calculate $d^2\psi(x)/dx^2$:
+\begin{align*}
+\frac{d^2\psi(x)}{dx^2}
+&= \frac{d}{dx}\left[\frac{d\psi_r(x_r)}{dx}\right]
+= \frac{d}{dx}\left[B^{-3/2}\,\frac{d\psi_r(x_r)}{dx_r}\right]
+= B^{-3/2}\,\frac{d}{dx}\,\left[\frac{d\psi_r(x_r)}{dx_r}\right]\\
+&= B^{-3/2}\,\frac{d}{dx_r}\,\left[\frac{d\psi_r(x_r)}{dx_r}\right]
+	\,\frac{dx_r}{dx}
+= B^{-3/2}\,\frac{d^2\psi_r(x_r)}{dx_r^2} \,B^{-1}\\
+&= B^{-5/2}\,\frac{d^2\psi_r(x_r)}{dx_r^2}
+\end{align*}
+
+\subsection{Zones I and III reduced Schrödinger equation}
+In zones I and III, the potential energy is the non-zero constant: $V(x) = V_0$.
+
+We substitute into the Scrödinger equation \ref{schro2}, using the reduced
+energy, \ref{reduced_e2}, and the reduced wavefunction definitions,
+\ref{reduced_psi}:
+\[
+B^{-5/2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2m}{\hbar^2}(\epsilon_rV_0-V_0)\,B^{-1/2}\psi_r=0
+\]
+
+We multiply both terms by $B^{1/2}$:
+\[
+B^{-5/2}B^{1/2}\,\frac{d^2\psi_r}{dx_r^2}
+	 - \frac{2mV_0}{\hbar^2}(1-\epsilon_r)\,B^{-1/2}\,B^{1/2}\,\psi_r=0
+\]
+
+\[
+B^{-2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2mV_0}{\hbar^2}(\epsilon_r-1)\,\psi_r=0
+\]
+
+From \ref{reduced_x2}, we know that $B^{-2}=mV_0/\hbar^2$:
+\[
+\frac{mV_0}{\hbar^2}\,\frac{d^2\psi_r}{dx_r^2}
+	 - \frac{2mV_0}{\hbar^2}(1-\epsilon_r)\,\psi_r=0
+\]
+
+We get the zones I and III reduced Schrödinger equation:
+\begin{equation}
+\frac{d^2\psi_r}{dx_r^2} - 2\,(1-\epsilon_r)\,\psi_r=0
+\end{equation}
+
+\subsection{Zone II reduced Schrödinger equation}
+In zone II, the potential energy is zero: $V(x) = 0$.
+The Schrodinger equation is:
+\[
+\label{schro2}
+\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} + E\,\psi(x) = 0
+\]
+
+As we did in the previous subsection, we get the reduced Schrödinger equation:
+\begin{equation}
+\frac{d^2\psi_r}{dx_r^2} + 2\epsilon_r\,\psi_r=0
+\end{equation}
+
+
+\section{Bound states}
+Recall that bonded states are those in which a particle is inside the
+potential well, so it has less total energy than the potential energy in its
+surroundings, so it wouldn't escape classically.
+
+\subsection{Initial solving}
+\subsubsection{Zone I}
+Domain: $x_r < 0$.\\
+Reduced Schrödinger equation: $\psi''_{rI} - 2(1-\epsilon_r)\psi_{rI} = 0$.\\
+Characteristic equation using $\psi_{rI}=e^{sx_r}$:
+\[
+s^2-2(1-\epsilon_r)=0
+\]
+\[
+s^2=2(1-\epsilon_r)
+\]
+\[
+s = \pm\sqrt{2(1-\epsilon_r)}
+\]
+So:
+\[
+\psi_{rI}(x_r)
+ = C_1\,e^{-\sqrt{2(1-\epsilon_r)}\,x_r} + C_2\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+Taking into account the following boundary condition:
+\[
+\lim_{\scriptsize x_r\to\, -\infty} \psi_{rI}(x_r) = 0
+\]
+
+we deduce that $C_1$ must be zero. The zone I wavefunction is:
+\[
+\psi_{rI}(x_r) = C_2\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsubsection{Zone II}
+Domain: $0 < x_r < l_r$.\\
+Reduced Schrödinger equation: $\psi''_{rII} - 2\epsilon_r\psi_{rII}= 0$.\\
+Characteristic equation using $\psi_{rII}=e^{sx_r}$:
+\[
+s^2+2\epsilon_r=0
+\]
+\[
+s^2=-2\epsilon_r
+\]
+\[
+s = \pm i\sqrt{2\epsilon_r}
+\]
+So:
+\begin{align*}
+\psi_{rII}(x_r)
+&=C_3\,e^{-i\,\sqrt{2\epsilon_r}\,x_r} + C_4\,e^{+i\,\sqrt{2\epsilon_r}\,x_r}\\
+&=C_3\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ - i C_3\,\sin\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + C_4\,\cos\left(\sqrt{2\epsilon_r}\right)\,x_r 
+ + i C_4\,\sin\left(\sqrt{2\epsilon_r}\,x_r\right)\\
+&=(C_3+C_4)\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + i (C_4-C_3)\,\sin\left(\sqrt{2\epsilon_r}\,x_r\right)
+\end{align*}
+
+we deduce that $C_6$ must be zero. The zone I wavefunction is:
+\[
+\psi_{rII}(x_r)
+= A\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + B\,\sin\left(\sqrt{2\epsilon_r}\,x_r\right)
+\]
+
+\subsubsection{Zone III}
+Domain: $x_r > l_r$.\\
+Reduced Schrödinger equation: $\psi''_{rIII} - 2(1-\epsilon_r)\psi_{rIII}= 0$.\\
+Characteristic equation using $\psi_{rIII}=e^{sx_r}$:
+\[
+s^2-2(1-\epsilon_r)=0
+\]
+\[
+s^2=2(1-\epsilon_r)
+\]
+\[
+s = \pm\sqrt{2(1-\epsilon_r)}
+\]
+So:
+\[
+\psi_{rIII}(x_r)
+ = C_5\,e^{-\sqrt{2(1-\epsilon_r)}\,x_r} + C_6\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+Taking into account the following boundary condition:
+\[
+\lim_{\scriptsize x_r\to\, +\infty} \psi_{rIII}(x_r) = 0
+\]
+
+we deduce that $C_6$ must be zero. The zone I wavefunction is:
+\[
+\psi_{rIII}(x_r) = C_5\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsection{Other boundary conditions}
+
+Wavefunctions I and II must tend to the same value at $x_r=0$:
+\[
+\lim_{\scriptsize x_r\to\,0} \psi_{rI}(x_r)
+=
+\lim_{\scriptsize x_r\to\,0} \psi_{rII}(x_r)
+\]
+So:
+\[
+C_2 = A
+\]
+
+The derivatives of wavefunctions I and II must tend to the same value at
+ $x_r=0$:
+\[
+\lim_{\scriptsize x_r\to\,0} \psi'_{rI}(x_r)
+=
+\lim_{\scriptsize x_r\to\,0} \psi'_{rII}(x_r)
+\]
+Let's calculate the derivatives of the wavefunctions:
+\begin{align*}
+\psi'_{rI} &= \frac{d\psi_{rI}(x_r)}{dx_r}
+  = C_2\,\sqrt{2(1-\epsilon_r)}\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+  = A\,\sqrt{2(1-\epsilon_r)}\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}\\
+\psi'_{rII} &= \frac{d\psi_{rII}(x_r)}{dx_r}
+  = -A\,\sqrt{2\epsilon_r}\,\sin\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + B\,\sqrt{2\epsilon_r}\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+\end{align*}
+
+Then:
+\[
+A\,\sqrt{2(1-\epsilon_r)} =  B\,\sqrt{2\epsilon_r}
+\]
+\[
+B = \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,A
+\]
+
+Wavefunctions II and III must tend to the same value at $x_r=l_r$:
+\[
+\lim_{\scriptsize x_r\to\,l_r} \psi_{rII}(x_r)
+=
+\lim_{\scriptsize x_r\to\,l_r} \psi_{rIII}(x_r)
+\]
+\[
+A\,\cos\left(l_r\sqrt{2\epsilon_r}\right)
+ + A\,\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+   \,\sin\left(l_r\,\sqrt{2\epsilon_r}\right)
+=
+C_5\,\,e^{-l_r\sqrt{2(1-\epsilon_r}}
+\]
+
+Solving for $C_5$:
+\begin{equation}
+\label{c5_1}
+C_5 = A\,e^{l_r\sqrt{2(1-\epsilon_r)}}
+  \left\lbrace\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+         \sin\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\end{equation}
+
+\subsection{Eigenvalue equation}
+The derivatives of the zone II and zone III wavefunctions must have the same
+limit at $l_r$:
+\[
+\lim_{\scriptsize x_r\to\,l_r} \psi'_{rII}(x_r)
+=
+\lim_{\scriptsize x_r\to\,l_r} \psi'_{rIII}(x_r)
+\]
+
+The derivative of $\psi_{rIII}$ is:
+\[
+\psi'_{rIII}(x_r) = \frac{d\psi_{rIII}(x_r)}{dx_r}
+  = -C_5\,\sqrt{2(1-\epsilon_r)}\,e^{-\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+Then, we get:
+\[
+-A\,\sqrt{2\epsilon_r}\,\sin\left(l_r\sqrt{2\epsilon_r}\right)
+ + A\,\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,\sqrt{2\epsilon_r}
+   \,\cos\left(l_r\,\sqrt{2\epsilon_r}\right)
+=
+-C_5\,\sqrt{2(1-\epsilon_r)}\,e^{-l_r\sqrt{2(1-\epsilon_r)}}
+\]
+
+Solving for $C_5$:
+\begin{equation}
+\label{c5_2}
+C_5 = A\,e^{l_r\sqrt{2(1-\epsilon_r)}}\,\sqrt{\frac{\epsilon_r}{1-\epsilon_r}}
+  \left\lbrace\sin\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+       \cos\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\end{equation}
+
+Expressions \ref{c5_1} and \ref{c5_2} are equal. Simplifying:
+\[
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+         \sin\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\sqrt{\frac{\epsilon_r}{1-\epsilon_r}}
+  \left\lbrace\sin\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+       \cos\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\]
+
+Moving left the square root which is next to the equal sign:
+\[
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right)\,
+  + \frac{1-\epsilon_r}{\epsilon_r}\,
+         \sin\left(l_r\sqrt{2\epsilon_r}\right)
+=
+  \sin\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+       \cos\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+Moving cosines to the left and sines to the right:
+\[
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+=
+  \sin\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \frac{1-\epsilon_r}{\epsilon_r}\,
+       \sin\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+\[
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+=
+  \left[1-\frac{1-\epsilon_r}{\epsilon_r}\right]
+  \sin\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+\[
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+=
+  \frac{2\epsilon_r-1}{\epsilon_r}
+  \sin\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+The eigenvalue equation is:
+\begin{equation}
+\label{eigenvalue_eq}
+\tan\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\end{equation}
+This equation cannot be solved exactly, but we could use numerical methods.
+See the numerical solution of this equation later.
+
+\subsection{Eigenfunctions}
+Summing up, taking into account the possible eigenvalues $\epsilon_r$, the
+eigenfunction at every zone is:
+\begin{equation}
+\psi_r(x_r)=
+\begin{cases}
+A\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+& -\infty<x_r<0\\
+A\,\left[\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon}}\,
+    \sin\left(\sqrt{2\epsilon_r}\,x_r\right)\right]
+& 0<x_r<l_r\phantom{\rule[-9pt]{0em}{0em}}\\
+A\,\left[\cos\left(l_r\sqrt{2\epsilon_r}\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon}}\,
+    \sin\left(l_r\sqrt{2\epsilon_r}\right)\right]
+    e^{-\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+& l_r<x_r<+\infty
+\end{cases}
+\end{equation}
+
+\subsection{Eigenfunctions squares}
+We'll calculate the squares of the eigenfunctions to normalize them:
+
+\subsubsection{Zone I}
+\[
+\left|\psi_{rI}(x_r)\right|^2
+= A^2\left(e^{\sqrt{2(1-\epsilon_r)}\,x_r}\right)^2
+= A^2\,e^{2\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsubsection{Zone II}
+\begin{align*}
+\left|\psi_{rII}(x_r)\right|^2
+&= A^2\,\left\lbrace\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+    \sin\left(\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace^2\\
+&= A^2\,\left\lbrace
+ \cos^2\left(\sqrt{2\epsilon_r}\,x_r\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sin^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + 2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(\sqrt{2\epsilon_r}\,x_r\right)\,
+ \cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace\\
+&= A^2\,\left\lbrace
+ 1 - \sin^2\left(\sqrt{2\epsilon_r}\,x_r\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sin^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace\\
+&= A^2\,\left\lbrace
+ 1  
+ + \left(-1+\frac{1-\epsilon_r}{\epsilon_r}\right)\,\sin^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace\\
+&= A^2\,\left\lbrace
+ 1  
+ + \frac{1-2\epsilon_r}{\epsilon_r}\,\sin^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace
+\end{align*}
+
+\subsubsection{Zone III}
+
+\begin{align*}
+\left|\psi_{rIII}(x_r)\right|^2
+&= A^2\,\left\lbrace\cos\left(l_r\sqrt{2\epsilon_r}\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+    \sin\left(l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace^2
+\left\lbrace
+\,e^{-\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+\right\rbrace^2\\
+&= A^2\,\left\lbrace
+ \cos^2\left(l_r\sqrt{2\epsilon_r}\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,\left\lbrace
+ 1 - \sin^2\left(l_r\sqrt{2\epsilon_r}\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,\left\lbrace
+ 1 
+ + \left(-1+\frac{1-\epsilon_r}{\epsilon_r}\right)\,\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,\left\lbrace
+ 1 
+ + \frac{1-2\epsilon_r}{\epsilon_r}\,\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+\end{align*}
+
+Regarding the last step, note that:
+\[
+ \frac{1-2\epsilon_r}{\epsilon_r}\,\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sin\left(2l_r\sqrt{2\epsilon_r}\right) = 0
+\]
+
+only if $\epsilon_r$ is an eigenvalue.
+
+Let's demonstrate this. Supposing that $\epsilon_r$ is an eigenvalue, then
+it must comply the eigenvalue equation, \ref{eigenvalue_eq}:
+\[
+\tan\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\]
+
+\[
+\frac{\sin\left(l_r\sqrt{2\epsilon_r}\right)}
+{\cos\left(l_r\sqrt{2\epsilon_r}\right)}
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\]
+
+Rearranging terms:
+\[
+\frac{2\epsilon_r-1}{\epsilon_r}\,
+\sin\left(l_r\sqrt{2\epsilon_r}\right)
+=
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+\[
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\sin\left(l_r\sqrt{2\epsilon_r}\right)
++
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right)
+=0
+\]
+
+Multiplying both terms by the sine of the angle:
+\[
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
++
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\sin\left(l_r\sqrt{2\epsilon_r}\right)\,
+\cos\left(l_r\sqrt{2\epsilon_r}\right)
+=0
+\]
+
+Then we demonstrate that:
+\[
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\sin^2\left(l_r\sqrt{2\epsilon_r}\right)
++
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\sin\left(2l_r\sqrt{2\epsilon_r}\right)
+=0
+\]
+
+\subsection{Normalization}
+The wavefunction must be normalized. That is:
+\[
+\int_{-\infty}^{+\infty} \left|\psi_r(x_r)\right|^2 dx_r = 1
+\]
+
+\[
+\int_{-\infty}^{0}\left|\psi_{rI}(x_r)\right|^2 dx_r 
+ + \int_{0}^{l_r}\left|\psi_{rII}(x_r)\right|^2 dx_r 
+ + \int_{l_r}^{+\infty}\left|\psi_{rIII}(x_r)\right|^2 dx_r 
+ = 1
+\]
+
+We must calculate three different integrals:
+\begin{equation}
+\label{normalization_eq}
+I_1 + I_2 + I_3 = 1
+\end{equation}
+
+\subsubsection{First integral: $I_1$}
+
+\[
+I_1 = \int_{-\infty}^{0}\left|\psi_{rI}(x_r)\right|^2 dx_r 
+= 
+A^2\,\int_{-\infty}^0 e^{2\sqrt{2(1-\epsilon_r)}\,x_r} dx_r
+\]
+
+Change of variable:
+\[
+2\sqrt{2(1-\epsilon_r)}\,x_r = t_r
+\hspace{2em}
+dx_r = \frac{1}{2\sqrt{2(1-\epsilon_r)}}\,dt_r
+\]
+
+\[
+I_1
+= A^2\,\frac{1}{2\sqrt{2(1-\epsilon_r)}}\int_{-\infty}^0 e^{t_r} dt_r
+= A^2\,\frac{1}{2\sqrt{2(1-\epsilon_r)}}(e^0-e^{-\infty})
+\]
+
+Then:
+\begin{equation}
+\label{I1}
+I_1 = \frac{A^2}{2\sqrt{2(1-\epsilon_r)}}
+\end{equation}
+
+\subsubsection{Third integral: $I_3$}
+
+We skip the second one for the moment:
+\[
+I_3 = \int_{l_r}^{+\infty}\left|\psi_{rIII}(x_r)\right|^2 dx_r 
+= 
+A^2\,\int_{l_r}^{+\infty} e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)} dx_r
+\]
+
+Change of variable:
+\[
+-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r) = t_r
+\hspace{2em}
+dx_r = \frac{-1}{2\sqrt{2(1-\epsilon_r)}}\,dt_r
+\]
+
+\[
+I_3
+= \frac{-A^2}{2\sqrt{2(1-\epsilon_r)}}\int_{0}^{-\infty} e^{t_r} dt_r
+= \frac{-A^2}{2\sqrt{2(1-\epsilon_r)}}(e^{-\infty}-e^{0})
+\]
+
+Then:
+\begin{equation}
+\label{I3}
+I_3 = \frac{A^2}{2\sqrt{2(1-\epsilon_r)}}
+\end{equation}
+
+\subsubsection{Second integral: $I_2$}
+
+As we will see, this integral will be solved calculating three integrals,
+$I_21$, $I_22$, $I_23$:
+
+\[
+I_2 = \int_{0}^{l_r}\left|\psi_{rII}(x_r)\right|^2 dx_r 
+= 
+A^2\,\int_{0}^{l_r}
+\left\lbrace
+1
+ + \frac{1-2\epsilon_r}{\epsilon_r}\,\sin^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,\sin\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace
+dx_r
+\]
+
+\[
+I_2 = A^2\,\left\lbrace I_{21} + I_{22} + I_{23}\right\rbrace
+\]
+
+\subsubsection{Second integral, first part: $I_{21}$}
+
+\[
+I_{21}
+= 
+\int_{0}^{l_r} dx_r
+\]
+
+\begin{equation}
+\label{I21}
+I_{21} = l_r
+\end{equation}
+
+\subsubsection{Second integral, second part: $I_{22}$}
+
+\[
+I_{22}
+= 
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\int_{0}^{l_r}\sin^2\left(\sqrt{2\epsilon_r}\,x_r\right) dx_r
+\]
+
+Change of variable:
+\[
+\sqrt{2\epsilon_r}\,x_r = t_r
+\hspace{2em}
+dx_r = \frac{1}{\sqrt{2\epsilon_r}}\,dt_r
+\]
+
+\[
+I_{22}
+= 
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\frac{1}{\sqrt{2\epsilon_r}}\,
+\int_{0}^{l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\sin^2 t_r\, dt_r
+\]
+
+Let's write $\sin^2 t_r$ in a different way:
+\[
+\cos 2t_r = \cos^2 t_r - \sin^2 t_r = 1-\sin^2 t_r - \sin^2 t_r
+= 1-2\sin^2 t_r
+\]
+
+\[
+\sin^2 t_r = \frac{1}{2} - \frac{1}{2}\,\cos (2t_r)
+\]
+
+\[
+I_{22}
+= 
+\frac{1-2\epsilon_r}{\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+\frac{1}{2}\int_{0}^{l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\,dt_r
+- \frac{1}{2}\int_{0}^{l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\cos(2t_r)\, dt_r
+\right\rbrace
+\]
+
+Change of variable:
+\[
+2t_r = z_r
+\hspace{2em}
+dt_r = \frac{1}{2}\,dz_r
+\]
+
+\begin{align*}
+I_{22}
+&= 
+\frac{1-2\epsilon_r}{\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+\frac{l_r\sqrt{2\epsilon_r}}{2}
+- \frac{1}{4}\int_{0}^{2l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\cos(2t_r)\, dt_r
+\right\rbrace\\
+&= 
+\frac{1-2\epsilon_r}{\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+\frac{2l_r\sqrt{2\epsilon_r}}{4}
+- \frac{\sin\left(2l_r\sqrt{2\epsilon_r}\right)}{4}
+\right\rbrace
+\end{align*}
+
+\begin{equation}
+\label{I22}
+I_{22} =
+\frac{1-2\epsilon_r}{4\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+2l_r\sqrt{2\epsilon_r}
+- \sin\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\end{equation}
+
+\subsubsection{Second integral, third part: $I_{23}$}
+
+\[
+I_{23}
+= 
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\int_{0}^{l_r}\sin\left(2\sqrt{2\epsilon_r}\,x_r\right)\, dx_r
+\]
+
+Change of variable:
+\[
+2\sqrt{2\epsilon_r}\,x_r = t_r
+\hspace{2em}
+dx_r = \frac{1}{2\sqrt{2\epsilon_r}}\,dt_r
+\]
+
+\begin{align*}
+I_{23}
+&= 
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\int_{0}^{2l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\sin t_r\, dt_r\\
+&= 
+-\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\left[\cos\left(2l_r\sqrt{2\epsilon_r}\right) - cos 0\right]
+\end{align*}
+
+\begin{equation}
+\label{I23}
+I_{23} =
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\left[1 - \cos\left(2l_r\sqrt{2\epsilon_r}\right)\right]
+\end{equation}
+
+So $I_2$ is:
+\begin{equation}
+\label{I2}
+I_2 
+= A^2\,
+\left\lbrace
+l_r
++
+\frac{1-2\epsilon_r}{4\epsilon_r\sqrt{2\epsilon_r}}\,
+\left[
+2l_r\sqrt{2\epsilon_r}
+- \sin\left(2l_r\sqrt{2\epsilon_r}\right)
+\right]
++
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\left[1 - \cos\left(2l_r\sqrt{2\epsilon_r}\right)\right]
+\right\rbrace
+\end{equation}
+
+From the normalization equation, \ref{normalization_eq}, we get the
+constant $A$:
+\[
+A = \frac{1}{\sqrt{I_1 + I_2 + I_3}}
+\]

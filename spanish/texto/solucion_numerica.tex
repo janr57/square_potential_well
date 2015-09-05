@@ -1,0 +1,356 @@
+% texto/solucion_numerica.tex
+
+\chapter{Solución numérica de los estados ligados}
+
+\section{Ecuación de valores propios}
+
+La ecuación de valores propios, \ref{eigenvalue_eq}, tiene dos partes:
+
+\[
+\tg\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\]
+
+\[
+f_1(\epsilon_r)
+=
+f_2(\epsilon_r)
+\]
+
+Una es la función tangente:
+\begin{equation}
+\label{eigenval_func1}
+f_1(\epsilon_r) = \tg\left({l_r\sqrt{2\epsilon_r}}\right)
+\end{equation}
+
+y la otra es una función no trigonométrica:
+\begin{equation}
+\label{eigenval_func2}
+f_2(\epsilon_r) = \frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\end{equation}
+
+\subsection{Función tangente}
+
+\subsubsection{Función: $\tg\theta$}
+La función tangente, $y = \tg\theta$ no es continua; tiene infinitas
+asíntotas verticales:
+\[
+y = \tg\theta = \frac{\sen\theta}{\cos\theta}
+\]
+
+Estas asíntotas corresponden a los puntos del eje $x$ en los que $\cos\theta=0$.
+Estos son los $\theta=(2n-1)\pi/2$, donde $n=\pm 1, \pm 2, \cdots$.
+La función tangente por esta razón, discontinua; pero entre las asíntotas es
+continua.
+
+Ahora veamos los ceros de la función tangente. La tangente será cero cuando
+el seno del ángulo sea cero. Esto ocurre en los puntos:
+\begin{equation}
+\label{asymptotes_tan}
+\theta=\cdots,-3\pi,-2\pi,-\pi,0,\pi,2\pi,3\pi,\cdots
+\end{equation}
+
+Analicemos si es creciente o decreciente entre las asíntotas. Si la primera
+derivada es positiva la función es creciente y decreciente si es negativa.
+La primera derivada es creciente pues el cuadrado de un número real siempre
+es positivo:
+\[
+y' = \frac{d(\tg\theta)}{d\theta} = \frac{1}{\cos^{2}\theta}
+\]
+
+La segunda derivada es:
+\[
+y'' = \frac{d(1/\cos^{2}\theta)}{d\theta} = 
+\frac{-\sen(2\theta)}{\cos^{4}\theta}
+\]
+
+La tangente será cóncava si la segunda derivada es positiva y convexa
+si esta segunda derivada fuera negativa.
+
+Razonemos el signo. Por un lado, $cos^{4}\theta$ es siempre positivo
+(potencia par).
+La convexidad o concavidad dependerá del signo de $-\sen (2\theta)$.
+Veamos:
+
+Como la función tangente es periódica, vamos a razonar la concavidad y la
+convexidad entre dos asíntotas consecutivas; lo que se deduzca se puede
+generalizar al resto de intervalos.
+
+La función $\sen\theta$ es negativa en el intervalo $(-\pi,0)$ y positiva en
+$(0,\pi)$.
+
+Se extender el razonamiento a la función $\sen (2\theta)$ teniendo en cuenta
+que el dominio se divide entre dos, lo que significa que los valores de
+$\theta$ anteriores se deben dividir entre dos.
+Resumiendo, $\sen (2\theta)$ será negativa en el intervalo abierto $(-\pi/2,0)$
+y positiva en $(0,\pi/2)$.
+
+A $-\sen (2\theta)$ le ocurrirá lo contrario debido al signo negativo:
+será positiva en el intervalo $(-\pi/2,0)$ y negativa en $(0,\pi/2)$.
+
+Como $(-\pi/2,+\pi/2)$ forman un intervalo entre dos asíntotas consecutivas,
+la primera mitad de éste es cóncavo y la segunda mitad convexo.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+restrict y to domain=-10:10,
+samples=2000,
+%width=7cm, height=5cm,
+xmin=-3.4*pi/2-0.1, xmax=3.3*pi/2+0.1,
+xtick={-4.7124,-1.5708,...,10},
+xticklabels={$-\frac32 \pi$,$-\pi/2$,$\pi/2$,$\frac32 \pi$},
+ytick={0},
+yticklabels={0},
+axis x line=center,
+axis y line=center,
+minor tick num=1,
+use background
+]
+
+% Asíntotas
+\foreach \i in {-3*pi/2,-pi/2,pi/2,3*pi/2}
+{\addplot[gray!50,dashed] coordinates{(\i,-10) (\i,10)};};%
+
+% Función tangente
+\addplot[blue] gnuplot[id=tangens,domain=-3.4*pi/2:3.4*pi] {tan(x)};
+
+\legend{$y=\tg(\theta)$}
+\end{axis}
+\end{tikzpicture}
+\caption{La función tangente, $y=\tg{\theta}$ es periódica}
+\end{figure}
+
+\subsubsection{Función: $\tg\left(l_r\sqrt{2\epsilon_r}\right)$}
+Muchas características generales estudiadas para $\tg\theta$ siguen siendo
+válidas ahora, pero hay unos cambios:
+
+El dominio ya no es el de todos los reales menos las posiciones donde hay
+asíntotas; ahora la energía reducida debe estar comprendida entre cero y uno,
+$0<\epsilon_r<1$, lo que limita el número de asíntotas que habrá.
+Recordando los ángulos en los que la función tangente no está definida,
+\ref{asymptotes_tan}, y descartando los valores negativos:
+
+\[
+\theta=l_r\sqrt{2\epsilon_r}=0,\pi,2\pi,3\pi,\cdots
+\]
+
+\[
+l_r\sqrt{2\epsilon_r}=(2n-1)\,\frac{\pi}{2}
+;\hspace*{1em}
+n=1,2,3,\cdots
+\]
+
+El entero $n$ tiene un límite superior, el correspondiente al valor
+$\epsilon_r=1$, que es inalcanzable:
+\begin{equation}
+\label{n_limsup}
+n < \frac{\sqrt{2}}{\pi}\,l_r + \frac{1}{2}
+\end{equation}
+
+Por otra parte, este valor de n máximo posible nos da el número de valores
+propios o de estados ligados.
+
+Además no puede valer cero; su menor valor es uno: $n\ge 1$. Están
+prohibidos los valores $n<1$. En este caso, para un infinitésimo $\delta$:
+\[
+1\le n\le\left\lfloor \frac{\sqrt{2}}{\pi}\,l_r+\frac{1}{2}-\delta\right\rfloor
+\]
+
+De aquí que:
+\[
+1 \le \left\lfloor\frac{\sqrt{2}}{\pi}\,l_r+\frac{1}{2}-\delta\right\rfloor
+\]
+
+\[
+1 \le \frac{\sqrt{2}}{\pi}\,l_r+\frac{1}{2}-\delta
+\]
+
+\[
+1 < \frac{\sqrt{2}}{\pi}\,l_r+\frac{1}{2}
+\]
+
+\[
+\frac{1}{2} < \frac{\sqrt{2}}{\pi}\,l_r
+\]
+
+Así, para que haya estados ligados, $l_r$ debe ser superior a:
+\[
+l_r > \frac{\pi}{2\sqrt{2}} \approx 1,11072073\cdots
+\]
+
+Como la variable independiente de la función, $l_r\sqrt{2\epsilon_r}$,
+es una función creciente de $\epsilon_r$, las asíntotas ya no están
+equiespaciadas, sino que esta distancia aumenta (hasta que se termina el
+dominio de la función con $\epsilon_r=1$). Por ejemplo, para un
+valor $l_r=11,45575$ se puede ver una representación en la figura
+~\ref{fig:eigenvalfuncs12}.
+
+\subsection{Función no trigonométrica}
+La función no trigonométrica, \ref{eigenval_func2}:
+\[
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\]
+está representada en la figura ~\ref{fig:eigenvalfuncs12}.
+
+Su dominio consiste en todos los reales comprendidos entre 0 y 1, excepto
+$\epsilon_r=0.5$, que es la asíntota vertical de esta función.  
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+group style={
+  group name=mygroup,
+  group size=2 by 1,
+  xlabels at=edge bottom,
+  ylabels at=edge left
+},
+footnotesize
+]
+
+\nextgroupplot[
+restrict y to domain=-10:10,
+samples=3000,
+xmin=0,xmax=1,
+ymin=-10,ymax=10,
+width=7cm,
+xlabel=$\epsilon_r$,
+ytick={0},
+yticklabels={0},
+minor tick num=1,
+use background
+]
+% Función tangente
+\addplot[blue] gnuplot[id=tangenvar,domain=0:1] {tan(11.45575*sqrt(2*x))};
+
+% Asíntotas
+\foreach \i in {pi/2,pi/2,3*pi/2,5*pi/2,7*pi/2,9*pi/2}
+{\addplot[gray!50,dashed] coordinates{(0.5*(\i/11.45575)^2,-10)(0.5*(\i/11.45575)^2,10)};};%
+\legend{$f_1(\epsilon_r) =\tg(l_r\sqrt{2\epsilon_r)}$}
+
+\nextgroupplot[
+restrict y to domain=-50:50,
+samples=2000,
+width=7cm,
+%width=7cm, height=5cm,
+xmin=0, xmax=1.0,
+ymin=-30,ymax=30,
+ytick={0},
+yticklabels={0},
+%axis x line=center,
+%axis y line=center,
+xlabel=$\epsilon_r$,
+minor tick num=1,
+use background
+]
+
+% Función tangente
+\addplot[red] gnuplot[id=tangenvar,domain=0:1] {2*x*sqrt((1-x)/x)/(2*x-1)};
+
+\legend{
+$f_2(\epsilon_r) = \frac{2\epsilon_r}{2\epsilon_r-1}\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}$
+}
+
+% Asíntotas
+\addplot[gray!50,dashed] coordinates{(0,-50) (0,50)};
+\addplot[gray!50,dashed] coordinates{(0.5,-50) (0.5,50)};
+
+\end{groupplot}
+\end{tikzpicture}
+
+\caption{Las dos funciones que forman la ecuación de valores propios}
+\label{fig:eigenvalfuncs12}
+\end{figure}
+
+Los valores propios se encuentran en los puntos de corte de estas dos
+funciones, ver figura ~\ref{fig:eigenvalues}:
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+[scale=0.5]
+\begin{axis}[
+restrict y to domain=-10:10,
+samples=2000,
+width=12cm,
+xmin=0, xmax=1,
+ymin=-10,ymax=10,
+ytick={0},
+yticklabels={0},
+minor tick num=1,
+%axis x line=center,
+%axis y line=center,
+xlabel=$\epsilon_r$,
+use background,
+]
+% Función tangente
+\addplot[blue] gnuplot[id=tangenvar,domain=0:1] {tan(11.45575*sqrt(2*x))};
+% Función otra
+\addplot[red] gnuplot[id=tangen,domain=0:1] {2*x*sqrt((1-x)/x)/(2*x-1)};
+\legend{$\tg(l_r\sqrt{2\epsilon_r)}$,
+  $\frac{2\epsilon_r}{2\epsilon_r-1}\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}$}
+
+% Asíntotas
+\foreach \i in {0,0.5}
+{\addplot[gray!50,dashed] coordinates{(\i,-10) (\i,10)};};%
+\foreach \i in {pi/2,3*pi/2,5*pi/2,7*pi/2,9*pi/2}
+{\addplot[gray!50,dashed] coordinates{(0.5*(\i/11.45575)^2,-10)(0.5*(\i/11.45575)^2,10)};};%
+
+\end{axis}
+\end{tikzpicture}
+\caption{Los puntos de corte representan los valores propios $\epsilon_r$}
+\label{fig:eigenvalues}
+\end{figure}
+
+\section{Funciones propias}
+Las funciones de ondas (una por cada valor propio) en las distintas zonas se
+calculó en ~\ref{wavefunctions}:
+\[
+\psi_r(x_r)=
+\begin{cases}
+A\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+& -\infty<x_r<0\\
+A\,\left[\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon}}\,
+    \sen\left(\sqrt{2\epsilon_r}\,x_r\right)\right]
+& 0<x_r<l_r\phantom{\rule[-10pt]{0em}{0em}}\\
+A\,\left[\cos\left(l_r\sqrt{2\epsilon_r}\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon}}\,
+    \sen\left(l_r\sqrt{2\epsilon_r}\right)\right]
+    e^{-\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+& l_r<x_r<+\infty
+\end{cases}
+\]
+
+donde $A$ se calcula:
+\[
+A = \frac{1}{\sqrt{I_1 + I_2 + I_3}}
+\]
+
+y las constantes $I_i$ ($i=1,2,3$):
+\begin{align*}
+&I_1 = \frac{1}{2\sqrt{2(1-\epsilon_r)}}\\
+&I_2 
+= 
+\left\lbrace
+l_r
++
+\frac{1-2\epsilon_r}{4\epsilon_r\sqrt{2\epsilon_r}}\,
+\left[
+2l_r\sqrt{2\epsilon_r}
+- \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right]
++
+\frac{1 - \cos\left(2l_r\sqrt{2\epsilon_r}\right)}
+{2\sqrt{2\epsilon_r}}\,
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\right\rbrace\\
+&I_3 = \frac{1}{2\sqrt{2(1-\epsilon_r)}}
+\end{align*}
+

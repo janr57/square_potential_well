@@ -1,0 +1,686 @@
+% texto/estados_ligados.tex
+
+\section{Estados enlazados}
+Los estados ligados o enlazados son aquellos en los que una partícula
+no es libre, se encuentra en el interior del pozo de potencial y su energía
+total es inferior a la energía potencial que rodea al pozo; en este caso
+$E<U_0$; en términos de variables reducidas, $\epsilon_r < 1$.
+En un estado enlazado la partícula no podría escapar del pozo según la Física
+clásica.
+
+\subsection{Primeros pasos en la resolución}
+\subsubsection{Zona I}
+\noindent
+Dominio: $x_r < 0$.
+Ecuación de Schrödinger reducida:
+$\psi''_{rI} - 2(1-\epsilon_r)\,\psi_{rI} = 0$.
+Ecuación característica usando $\psi_{rI}=e^{sx_r}$:
+\[
+s^2-2(1-\epsilon_r)=0
+\]
+\[
+s^2=2(1-\epsilon_r)
+\]
+\[
+s = \pm\sqrt{2(1-\epsilon_r)}
+\]
+So:
+\[
+\psi_{rI}(x_r)
+ = C_1\,e^{-\sqrt{2\epsilon_r}\,x_r} + C_2\,e^{\sqrt{2\epsilon_r}\,x_r}
+\]
+
+Primera condición límite, la función de onda debe anularse en $-\infty$:
+\[
+\lim_{\scriptsize x_r\to\, -\infty} \psi_{rI}(x_r) = 0
+\]
+
+Deducimos que $C_1$ debe valer cero. La función de onda en la zona I es:
+\[
+\psi_{rI}(x_r) = C_2\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsubsection{Zona II}
+\noindent
+Dominio: $0 < x_r < l_r$.\\
+Ecuación de Schrödinger reducida: $\psi''_{rII} - 2\epsilon_r\psi_{rII}= 0$.\\
+Ecuación característica usando $\psi_{rII}=e^{sx_r}$:
+\[
+s^2+2\epsilon_r=0
+\]
+\[
+s^2=-2\epsilon_r
+\]
+\[
+s = \pm i\sqrt{2\epsilon_r}
+\]
+
+Así:
+\begin{align*}
+\psi_{rII}(x_r)
+&=C_3\,e^{-i\,\sqrt{2\epsilon_r}\,x_r} + C_4\,e^{+i\,\sqrt{2\epsilon_r}\,x_r}\\
+&=C_3\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ - i C_3\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + C_4\,\cos\left(\sqrt{2\epsilon_r}\right)\,x_r 
+ + i C_4\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)\\
+&=(C_3+C_4)\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + i (C_4-C_3)\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+\end{align*}
+
+La función de onda en la zona II es:
+\[
+\psi_{rII}(x_r)
+= A\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + B\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+\]
+
+\subsubsection{Zona III}
+\noindent
+Dominio: $x_r > l_r$.\\
+Ecuación de Schrödinger reducida:
+$\psi''_{rIII} - 2(1-\epsilon_r)\psi_{rIII}= 0$.\\
+Ecuación característica usando $\psi_{rIII}=e^{sx_r}$:
+\[
+s^2-2(1-\epsilon_r)=0
+\]
+\[
+s^2=2(1-\epsilon_r)
+\]
+\[
+s = \pm\sqrt{2(1-\epsilon_r)}
+\]
+Así:
+\[
+\psi_{rIII}(x_r)
+ = C_5\,e^{-\sqrt{2(1-\epsilon_r)}\,x_r} + C_6\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+Teniendo en cuenta que la función de onda se debe anular en $+\infty$:
+\[
+\lim_{\scriptsize x_r\to\, +\infty} \psi_{rIII}(x_r) = 0
+\]
+
+Deducimos que $C_6$ debe valer cero. La función de onda en la zona III es:
+\[
+\psi_{rIII}(x_r) = C_5\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsection{Otras condiciones límite}
+
+Las funciones de onda en las zonas I y II deben tender al mismo valor en
+$x_r=0$.
+\[
+\lim_{\scriptsize x_r\to\,0} \psi_{rI}(x_r)
+=
+\lim_{\scriptsize x_r\to\,0} \psi_{rII}(x_r)
+\]
+
+Así:
+\[
+C_2 = A
+\]
+
+Las derivadas de las funciones de onda en I y en II también deben tender al
+mismo valor en $x_r=0$:
+\[
+\lim_{\scriptsize x_r\to\,0} \psi'_{rI}(x_r)
+=
+\lim_{\scriptsize x_r\to\,0} \psi'_{rII}(x_r)
+\]
+
+Calculemos las derivadas de las funciones de onda en las zonas I y II:
+\begin{align*}
+\psi'_{rI} &= \frac{d\psi_{rI}(x_r)}{dx_r}
+  = C_2\,\sqrt{2(1-\epsilon_r)}\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+  = A\,\sqrt{2(1-\epsilon_r)}\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}\\
+\psi'_{rII} &= \frac{d\psi_{rII}(x_r)}{dx_r}
+  = -A\,\sqrt{2\epsilon_r}\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + B\,\sqrt{2\epsilon_r}\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+\end{align*}
+
+Luego:
+\[
+A\,\sqrt{2(1-\epsilon_r)} =  B\,\sqrt{2\epsilon_r}
+\]
+\[
+B = \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,A
+\]
+
+Las funciones de onda en las zonas II y III deben tender al mismo valor en
+en el otro extremo del pozo de potencial, $x_r=l_r$:
+\[
+\lim_{\scriptsize x_r\to\,l_r} \psi_{rII}(x_r)
+=
+\lim_{\scriptsize x_r\to\,l_r} \psi_{rIII}(x_r)
+\]
+
+\[
+A\,\cos\left(l_r\sqrt{2\epsilon_r}\right)
+ + A\,\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+   \,\sen\left(l_r\,\sqrt{2\epsilon_r}\right)
+=
+C_5\,\,e^{-l_r\sqrt{2(1-\epsilon_r}}
+\]
+
+Despejando $C_5$:
+\begin{equation}
+\label{c5_1}
+C_5 = A\,e^{l_r\sqrt{2(1-\epsilon_r)}}
+  \left\lbrace\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+         \sen\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\end{equation}
+
+\subsection{Ecuación de valores propios}
+Las derivadas de la función de onda en las zonas II y III deben coincidir en
+$x_r=l_r$:
+\[
+\lim_{\scriptsize x_r\to\,l_r} \psi'_{rII}(x_r)
+=
+\lim_{\scriptsize x_r\to\,l_r} \psi'_{rIII}(x_r)
+\]
+
+La derivada de $\psi_{rIII}$ es:
+\[
+\psi'_{rIII}(x_r) = \frac{d\psi_{rIII}(x_r)}{dx_r}
+  = -C_5\,\sqrt{2(1-\epsilon_r)}\,e^{-\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+Entonces:
+\[
+-A\,\sqrt{2\epsilon_r}\,\sen\left(l_r\sqrt{2\epsilon_r}\right)
+ + A\,\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,\sqrt{2\epsilon_r}
+   \,\cos\left(l_r\,\sqrt{2\epsilon_r}\right)
+=
+-C_5\,\sqrt{2(1-\epsilon_r)}\,e^{-l_r\sqrt{2(1-\epsilon_r)}}
+\]
+
+Despejando $C_5$:
+\begin{equation}
+\label{c5_2}
+C_5 = A\,e^{l_r\sqrt{2(1-\epsilon_r)}}\,\sqrt{\frac{\epsilon_r}{1-\epsilon_r}}
+  \left\lbrace\sen\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+       \cos\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\end{equation}
+
+Las expresiones \ref{c5_1} y \ref{c5_2} son iguales. Simplificando:
+\[
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+         \sen\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\sqrt{\frac{\epsilon_r}{1-\epsilon_r}}
+  \left\lbrace\sen\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+       \cos\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\]
+
+Pasando a la izquierda la raíz cuadrada que está junto al signo igual:
+\[
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right)\,
+  + \frac{1-\epsilon_r}{\epsilon_r}\,
+         \sen\left(l_r\sqrt{2\epsilon_r}\right)
+=
+  \sen\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+       \cos\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+Pasando los cosenos a la izquierda y los senos a la derecha:
+\[
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+=
+  \sen\left(l_r\sqrt{2\epsilon_r}\right)\,
+  - \frac{1-\epsilon_r}{\epsilon_r}\,
+       \sen\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+\[
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+=
+  \left[1-\frac{1-\epsilon_r}{\epsilon_r}\right]
+  \sen\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+\[
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+=
+  \frac{2\epsilon_r-1}{\epsilon_r}
+  \sen\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+La ecuación de valores propios es:
+\begin{equation}
+\label{eigenvalue_eq}
+\tan\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\end{equation}
+
+Esta ecuación no se puede resolver exactamente, sino que debemos utilizar
+métodos numéricos.
+
+\subsection{Funciones propias}
+Resumiendo y teniendo en cuenta los posibles valores propios, $\epsilon_r$,
+la función de onda en cada zona es:
+\begin{equation}
+\label{wavefunctions}
+\psi_r(x_r)=
+\begin{cases}
+A\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+& -\infty<x_r<0\\
+A\,\left[\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon}}\,
+    \sen\left(\sqrt{2\epsilon_r}\,x_r\right)\right]
+& 0<x_r<l_r\phantom{\rule[-9pt]{0em}{0em}}\\
+A\,\left[\cos\left(l_r\sqrt{2\epsilon_r}\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon}}\,
+    \sen\left(l_r\sqrt{2\epsilon_r}\right)\right]
+    e^{-\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+& l_r<x_r<+\infty
+\end{cases}
+\end{equation}
+
+\subsection{Cuadrados de la función de onda en cada zona}
+Necesitamos calcular el cuadrado de la función de onda pues tenemos
+que normalizarla:
+
+\subsubsection{Zone I}
+\[
+\left|\psi_{rI}(x_r)\right|^2
+= A^2\left(e^{\sqrt{2(1-\epsilon_r)}\,x_r}\right)^2
+= A^2\,e^{2\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsubsection{Zone II}
+\begin{align*}
+\left|\psi_{rII}(x_r)\right|^2
+&= A^2\,\left\lbrace\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+    \sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace^2\\
+&= A^2\,\left\lbrace
+ \cos^2\left(\sqrt{2\epsilon_r}\,x_r\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sen^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + 2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(\sqrt{2\epsilon_r}\,x_r\right)\,
+ \cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace\\
+&= A^2\,\left\lbrace
+ 1 - \sen^2\left(\sqrt{2\epsilon_r}\,x_r\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sen^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace\\
+&= A^2\,\left\lbrace
+ 1  
+ + \left(-1+\frac{1-\epsilon_r}{\epsilon_r}\right)\,\sen^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace\\
+&= A^2\,\left\lbrace
+ 1  
+ + \frac{1-2\epsilon_r}{\epsilon_r}\,\sen^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace
+\end{align*}
+
+\subsubsection{Zone III}
+
+\begin{align*}
+\left|\psi_{rIII}(x_r)\right|^2
+&= A^2\,\left\lbrace\cos\left(l_r\sqrt{2\epsilon_r}\right)
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+    \sen\left(l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace^2
+\left\lbrace
+\,e^{-\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+\right\rbrace^2\\
+&= A^2\,\left\lbrace
+ \cos^2\left(l_r\sqrt{2\epsilon_r}\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,\left\lbrace
+ 1 - \sen^2\left(l_r\sqrt{2\epsilon_r}\right)\,
+ + \frac{1-\epsilon_r}{\epsilon_r}\,\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,\left\lbrace
+ 1 
+ + \left(-1+\frac{1-\epsilon_r}{\epsilon_r}\right)\,\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,\left\lbrace
+ 1 
+ + \frac{1-2\epsilon_r}{\epsilon_r}\,\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}\\
+&= A^2\,e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)}
+\end{align*}
+
+Con respecto al último paso, nótese que:
+\[
+ \frac{1-2\epsilon_r}{\epsilon_r}\,\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+ \sen\left(2l_r\sqrt{2\epsilon_r}\right) = 0
+\]
+sólo si $\epsilon_r$ es un valor propio.  
+
+Para demostrar esto, supondremos que $\epsilon_r$ es un valor propio, entonces
+debe cumplir la ecuación de valores propios, \ref{eigenvalue_eq}:
+\[
+\tan\left(l_r\sqrt{2\epsilon_r}\right)
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\]
+
+\[
+\frac{\sen\left(l_r\sqrt{2\epsilon_r}\right)}
+{\cos\left(l_r\sqrt{2\epsilon_r}\right)}
+=
+\frac{2\epsilon_r}{2\epsilon_r-1}
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\]
+
+Reagrupando términos:
+\[
+\frac{2\epsilon_r-1}{\epsilon_r}\,
+\sen\left(l_r\sqrt{2\epsilon_r}\right)
+=
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right)
+\]
+
+\[
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\sen\left(l_r\sqrt{2\epsilon_r}\right)
++
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\cos\left(l_r\sqrt{2\epsilon_r}\right)
+=0
+\]
+
+Multiplicando ambos miembros por el seno del ángulo:
+\[
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
++
+2\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\sen\left(l_r\sqrt{2\epsilon_r}\right)\,
+\cos\left(l_r\sqrt{2\epsilon_r}\right)
+=0
+\]
+
+Entonces hemos demostrado que:
+\[
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\sen^2\left(l_r\sqrt{2\epsilon_r}\right)
++
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+\sen\left(2l_r\sqrt{2\epsilon_r}\right)
+=0
+\]
+
+\subsection{Normalización}
+La función de onda se tiene que normalizar. Esto es:
+\[
+\int_{-\infty}^{+\infty} \left|\psi_r(x_r)\right|^2 dx_r = 1
+\]
+
+\[
+\int_{-\infty}^{0}\left|\psi_{rI}(x_r)\right|^2 dx_r 
+ + \int_{0}^{l_r}\left|\psi_{rII}(x_r)\right|^2 dx_r 
+ + \int_{l_r}^{+\infty}\left|\psi_{rIII}(x_r)\right|^2 dx_r 
+ = 1
+\]
+
+Debemos calcular tres integrales:
+\begin{equation}
+\label{normalization_eq}
+I_1 + I_2 + I_3 = 1
+\end{equation}
+
+\subsubsection{Primera integral: $I_1$}
+
+\[
+I_1 = \int_{-\infty}^{0}\left|\psi_{rI}(x_r)\right|^2 dx_r 
+= 
+A^2\,\int_{-\infty}^0 e^{2\sqrt{2(1-\epsilon_r)}\,x_r} dx_r
+\]
+
+Cambio de variable:
+\[
+2\sqrt{2(1-\epsilon_r)}\,x_r = t_r
+\hspace{2em}
+dx_r = \frac{1}{2\sqrt{2(1-\epsilon_r)}}\,dt_r
+\]
+
+\[
+I_1
+= A^2\,\frac{1}{2\sqrt{2(1-\epsilon_r)}}\int_{-\infty}^0 e^{t_r} dt_r
+= A^2\,\frac{1}{2\sqrt{2(1-\epsilon_r)}}(e^0-e^{-\infty})
+\]
+
+Luego:
+\begin{equation}
+\label{I1}
+I_1 = \frac{A^2}{2\sqrt{2(1-\epsilon_r)}}
+\end{equation}
+
+\subsubsection{Tercera integral: $I_3$}
+
+Nos saltamos la segunda integral por el momento:
+\[
+I_3 = \int_{l_r}^{+\infty}\left|\psi_{rIII}(x_r)\right|^2 dx_r 
+= 
+A^2\,\int_{l_r}^{+\infty} e^{-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r)} dx_r
+\]
+
+Cambio de variable:
+\[
+-2\sqrt{2(1-\epsilon_r)}\,(x_r-l_r) = t_r
+\hspace{2em}
+dx_r = \frac{-1}{2\sqrt{2(1-\epsilon_r)}}\,dt_r
+\]
+
+\[
+I_3
+= \frac{-A^2}{2\sqrt{2(1-\epsilon_r)}}\int_{0}^{-\infty} e^{t_r} dt_r
+= \frac{-A^2}{2\sqrt{2(1-\epsilon_r)}}(e^{-\infty}-e^{0})
+\]
+
+Entonces:
+\begin{equation}
+\label{I3}
+I_3 = \frac{A^2}{2\sqrt{2(1-\epsilon_r)}}
+\end{equation}
+
+\subsubsection{Segunda integral: $I_2$}
+
+Como veremos, esta integral se resolverá en tres partes,
+$I_{21}$, $I_{22}$, $I_{23}$:
+\[
+I_2 = \int_{0}^{l_r}\left|\psi_{rII}(x_r)\right|^2 dx_r 
+= 
+A^2\,\int_{0}^{l_r}
+\left\lbrace
+1
+ + \frac{1-2\epsilon_r}{\epsilon_r}\,\sen^2\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,\sen\left(2\sqrt{2\epsilon_r}\,x_r\right)
+\right\rbrace
+dx_r
+\]
+
+\[
+I_2 = A^2\,\left\lbrace I_{21} + I_{22} + I_{23}\right\rbrace
+\]
+
+\subsubsection{Segunda integral, primera parte: $I_{21}$}
+
+\[
+I_{21}
+= 
+\int_{0}^{l_r} dx_r
+\]
+
+\begin{equation}
+\label{I21}
+I_{21} = l_r
+\end{equation}
+
+\subsubsection{Segunda integral, segunda parte: $I_{22}$}
+
+\[
+I_{22}
+= 
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\int_{0}^{l_r}\sen^2\left(\sqrt{2\epsilon_r}\,x_r\right) dx_r
+\]
+
+Cambio de variable:
+\[
+\sqrt{2\epsilon_r}\,x_r = t_r
+\hspace{2em}
+dx_r = \frac{1}{\sqrt{2\epsilon_r}}\,dt_r
+\]
+
+\[
+I_{22}
+= 
+\frac{1-2\epsilon_r}{\epsilon_r}\,
+\frac{1}{\sqrt{2\epsilon_r}}\,
+\int_{0}^{l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\sen^2 t_r\, dt_r
+\]
+
+Escribamos $\sen^2 t_r$ de una forma diferente:
+\[
+\cos 2t_r = \cos^2 t_r - \sen^2 t_r = 1-\sen^2 t_r - \sen^2 t_r
+= 1-2\sen^2 t_r
+\]
+
+\[
+\sen^2 t_r = \frac{1}{2} - \frac{1}{2}\,\cos (2t_r)
+\]
+
+\[
+I_{22}
+= 
+\frac{1-2\epsilon_r}{\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+\frac{1}{2}\int_{0}^{l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\,dt_r
+- \frac{1}{2}\int_{0}^{l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\cos(2t_r)\, dt_r
+\right\rbrace
+\]
+
+Cambio de variable:
+\[
+2t_r = z_r
+\hspace{2em}
+dt_r = \frac{1}{2}\,dz_r
+\]
+
+\begin{align*}
+I_{22}
+&= 
+\frac{1-2\epsilon_r}{\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+\frac{l_r\sqrt{2\epsilon_r}}{2}
+- \frac{1}{4}\int_{0}^{2l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\cos(2t_r)\, dt_r
+\right\rbrace\\
+&= 
+\frac{1-2\epsilon_r}{\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+\frac{2l_r\sqrt{2\epsilon_r}}{4}
+- \frac{\sen\left(2l_r\sqrt{2\epsilon_r}\right)}{4}
+\right\rbrace
+\end{align*}
+
+\begin{equation}
+\label{I22}
+I_{22} =
+\frac{1-2\epsilon_r}{4\epsilon_r\sqrt{2\epsilon_r}}\,
+\left\lbrace
+2l_r\sqrt{2\epsilon_r}
+- \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right\rbrace
+\end{equation}
+
+\subsubsection{Segunda integral, tercera parte: $I_{23}$}
+
+\[
+I_{23}
+= 
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\int_{0}^{l_r}\sen\left(2\sqrt{2\epsilon_r}\,x_r\right)\, dx_r
+\]
+
+Cambio de variable:
+\[
+2\sqrt{2\epsilon_r}\,x_r = t_r
+\hspace{2em}
+dx_r = \frac{1}{2\sqrt{2\epsilon_r}}\,dt_r
+\]
+
+\begin{align*}
+I_{23}
+&= 
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\int_{0}^{2l_r\sqrt{2\epsilon_r}}\hspace*{-2em}\sen t_r\, dt_r\\
+&= 
+-\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\left[\cos\left(2l_r\sqrt{2\epsilon_r}\right) - cos 0\right]
+\end{align*}
+
+\begin{equation}
+\label{I23}
+I_{23} =
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\left[1 - \cos\left(2l_r\sqrt{2\epsilon_r}\right)\right]
+\end{equation}
+
+So $I_2$ is:
+\begin{equation}
+\label{I2}
+I_2 
+= A^2\,
+\left\lbrace
+l_r
++
+\frac{1-2\epsilon_r}{4\epsilon_r\sqrt{2\epsilon_r}}\,
+\left[
+2l_r\sqrt{2\epsilon_r}
+- \sen\left(2l_r\sqrt{2\epsilon_r}\right)
+\right]
++
+\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+\frac{1}{2\sqrt{2\epsilon_r}}\,
+\left[1 - \cos\left(2l_r\sqrt{2\epsilon_r}\right)\right]
+\right\rbrace
+\end{equation}
+
+De la condición de normalización, \ref{normalization_eq}, podemos obtener el
+valor de $A$:
+\[
+A = \frac{1}{\sqrt{I_1 + I_2 + I_3}}
+\]
+

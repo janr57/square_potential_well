@@ -1,0 +1,67 @@
+% square_potential_well.tex
+% Copyright (C) 2013 José A. Navarro josea.navarro@murciaeduca.es
+%\documentclass[svgnames,a4paper,twoside]{book}
+\documentclass[svgnames,a4paper,twoside]{book}
+% Paper dimensions for tikz
+\paperwidth=210mm
+\paperheight=297mm
+%\usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage[charter]{mathdesign}
+\usepackage{textcomp}
+\usepackage[final,babel]{microtype}
+
+\usepackage{siunitx}
+%\sisetup{output-decimal-marker = {,}}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage{svg}
+\usepackage{cancel}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{empheq}
+\usepackage{nameref}
+\usepackage{multicol}
+%\usepackage{emptypage}
+%\usepackage{hyperref}
+\usepackage[version=3]{mhchem}
+%\usepackage{chmst-pdf}
+\usepackage{xymtexpdf}
+\usepackage{chemfig}
+\usepackage{chemmacros}
+\usepackage{listings}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.arrows,arrows,backgrounds,positioning,fit,%
+                decorations.pathmorphing,decorations.pathreplacing,
+		decorations.text,calc,
+		shapes.geometric,shadows,
+	        intersections}
+
+\title{Particle In A Square Potential Well}
+\author{José A. Navarro Ramón}
+\begin{document}
+\frontmatter
+
+\maketitle
+\tableofcontents
+
+\mainmatter
+%\thispagestyle{empty}
+%\newpage
+%\thispagestyle{empty}
+%\newpage
+\include{./text/schrodinger_equation}
+
+\appendix
+\chapter{First Appendix}
+
+\backmatter
+\chapter{Last note}
+
+\end{document}
+

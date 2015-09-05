@@ -1,0 +1,16 @@
+english/*.log
+english/*.aux
+english/*.toc
+english/*.gnuplot
+english/*.table
+english/*.pdf
+english/text/*.aux
+
+español/*.log
+español/*.aux
+español/*.toc
+español/*.gnuplot
+español/*.table
+español/*.pdf
+español/texto/*.aux
+

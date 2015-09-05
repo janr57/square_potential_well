@@ -1,0 +1,251 @@
+% texto/ecuacion_schrodinger.tex
+
+\chapter[Ecuación de Schrödinger para el pozo de potencial rectangular]
+{Ecuación de Schrödinger unidimensional para el pozo de potencial rectangular}
+
+\section{Pozo de potencial rectangular}
+Supondremos que tenemos una partícula de masa $m$, que se encuentra en un
+espacio de una dimensión $x$. La energía potencial en todo el espacio vale
+$U(x)=U_0$, excepto en una región comprendida en el intervalo $0 < x < l$, donde
+$l$ es una coordenada positiva; la energía potencial en esta región vale cero:
+$U(x)=0$.
+
+A continuación se presenta una representación del pozo de potencial.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+[
+scale=0.75,
+%use background
+]
+
+\begin{axis}
+[xmin=-10, xmax=16, ymin=-4, ymax=3,
+xlabel={Posición}, ylabel={Energía},
+xtick={0,6}, ytick={-3,0},
+xticklabels={0,$l$}, yticklabels={0,$U_0$},
+use background % Color definido en la cabecera del documento todo el gráfico
+%background color=orange!20, use background, % Color todo el gráfico
+%axis background/.style={fill=yellow!20} % Color en el interior de la gráfica
+]
+\addplot+[sharp plot,no marks,line width=2pt,color=black] coordinates
+{(-10,0) (0,0) (0,-3) (6,-3) (6,0) (16,0)};
+\end{axis}
+\end{tikzpicture}
+\caption{Representación del pozo de potencial rectangular}
+\end{figure}
+
+Reconocemos tres regiones:
+\begin{itemize}
+\item Zona I: Posiciones a la izquierda del pozo, $x<0$.
+\item Zona II: Posiciones del pozo de potencial, $0<x<l$, donde la
+partícula siente una atracción representada por el potencial.
+\item Zona III: Posiciones a la derecha del pozo, $x>l$.
+\end{itemize}
+
+El pozo de potencial representa la región del eje $x$ donde la partícula
+está sujeta a una fuerza atractiva.
+
+\section{Variables adimensionales}
+Se podría resolver la ecuación de Schrödinger directamente, utilizando las
+variables en el SI, pero vamos a utilizar variables adimensionales porque,
+en cierto sentido, los resultados que obtengamos son independientes de
+las escalas de masas, longitudes y energías de cada caso particular.
+Por supuesto, si las variables son adimensionales también lo será la
+ecuación de Scrödinger.
+
+Se utilizará una posición reducida adimensional, $x_r$, definida como:
+\begin{equation}
+\label{reduced_x}
+	x_r = \frac{x}{C}
+\end{equation}
+$C$ es una constante con dimensiones de longitud, $[C] = L^1$.
+
+De manera similar, necesitamos una energía reducida adimensional, $\epsilon_r$:
+\begin{equation}
+\label{reduced_e}
+	\epsilon_r = \frac{E}{D}
+\end{equation}
+donde $D$ es una constante con dimensiones de energía, $[D] = ML^2T^{-2}$.
+
+Estas constantes $C$ and $D$ deben depender de magnitudes que aparecen en la
+ecuación de Schrödinger en una dimensión, $x$:
+\begin{equation}
+\label{schro1}
+-\frac{\hbar^2}{2m}\frac{d\psi(x)}{dx^2}+U(x)\,\psi(x) = E\,\psi(x)
+\end{equation}
+
+Las magnitudes de las que dependerán las constantes anteriores son la
+constate de Planck reducida, $\hbar$, la masa de la partícula, $m$, y el
+valor del potencial que rodea al pozo, $U_0$.
+
+Sus dimensiones respectivas son acción, masa y energía:
+\begin{align*}
+&[\hbar] = ML^2T^{-1}\\
+&[m] = M\\
+&[U_0] = ML^2T^{-2}
+\end{align*}
+
+La constante $C$ es una combinación de estas constantes
+\[
+[C] = \hbar^a \,m^b \,V_0^c =
+(ML^2T^{-1})^a \,(M)^b \,(ML^2T^{-2})^c =
+M^{a+b+c} \,L^{2a+2c} \,T^{-a-2c}
+\]
+
+Los exponentes $a$, $b$ and $c$ se pueden calcular sabiendo que $C$ sólo tiene
+dimensiones de longitud ($M^0 L^1 T^0 = L$).
+De esta manera se obtiene el siguiente sistema de ecuaciones:
+\begin{align*}
+&a + b + c = 0\\
+&2a+2c = 1\\
+&-a-2c = 0
+\end{align*}
+
+Las soluciones son: $a=1$ and $b=c=-1/2$. Así, $C$ vale:
+\begin{equation}
+C = \hbar \,(mU_0)^{-1/2} = \frac{\hbar}{\sqrt{mU_0}}
+\end{equation}
+
+El razonamiento del valor de la constante $D$ es más sencillo:
+$D=U_0$, puesto que ambas magnitudes, $D$ y $U_0$ tienen dimensiones de
+energía.
+
+Así, tenemos:
+\begin{equation}
+\label{reduced_x2}
+x_r = \frac{x}{C}=\frac{x}{\hbar/\sqrt{mU_0}} = \frac{\sqrt{mU_0}}{\hbar}\,x
+\end{equation}
+
+y
+\begin{equation}
+\label{reduced_e2}
+\epsilon_r = \frac{E}{D}=\frac{E}{U_0}
+\end{equation}
+
+De esta manera, cuando queramos recuperar los valores reales (con las
+dimensiones apropiadas), realizaremos los siguientes cálculos:
+\[
+x = \frac{\hbar}{\sqrt{mU_0}}\,x_r
+\]
+
+y
+\[
+E = U_0\,\epsilon_r
+\]
+
+\subsection{Función de onda y ecuación de Schrödinger reducida}
+Nótese que $|\psi(x)|^2\,dx$ es una probabilidad, por lo que no tiene
+dimensiones. De esto deducimos que la función de onda, $\psi(x)$, debe tener
+dimensiones de $L^{-1/2}$.
+
+Aprovechando que la constante $C$ tiene dimensiones de longitud, podemos
+definir una función de onda reducida, $\psi_r(x_r)$:
+\begin{equation}
+\label{reduced_psi}
+\psi_r(x_r) = \frac{\psi(x)}{C^{-1/2}}
+\end{equation}
+
+Para deducir la ecuación de Schrödinger reducida correspondiente, debemos
+partir de la ecuación normal. Transformando ligeramente la \ref{schro1}:
+\begin{equation}
+\label{schro2}
+\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} + (E-U(x))\psi(x) = 0
+\end{equation}
+
+Se calcula la primera derivada de la función de onda, $d\psi(x)/dx$, 
+usando \ref{reduced_psi}:
+\[
+\frac{d\psi(x)}{dx}
+= \frac{d}{dx}\, C^{-1/2}\psi_r(x_r)
+= C^{-1/2}\,\frac{d\psi_r(x_r)}{dx}
+= C^{-1/2}\,\frac{d\psi_r(x_r)}{dx_r}\,\frac{dx_r}{dx}
+\]
+
+De \ref{reduced_x}, podemos calcular $dx_r/dx$, lo que da $C^{-1}$:
+\[
+\frac{d\psi(x)}{dx}
+= C^{-1/2}\,\frac{d\psi_r(x_r)}{dx_r}\,C^{-1}
+= C^{-3/2}\,\frac{d\psi_r(x_r)}{dx_r}
+\]
+
+Ahora se calcula la segunda derivada, $d^2\psi(x)/dx^2$:
+\begin{align*}
+\frac{d^2\psi(x)}{dx^2}
+&= \frac{d}{dx}\left[\frac{d\psi_r(x_r)}{dx}\right]
+= \frac{d}{dx}\left[C^{-3/2}\,\frac{d\psi_r(x_r)}{dx_r}\right]
+= C^{-3/2}\,\frac{d}{dx}\,\left[\frac{d\psi_r(x_r)}{dx_r}\right]\\
+&= C^{-3/2}\,\frac{d}{dx_r}\,\left[\frac{d\psi_r(x_r)}{dx_r}\right]
+	\,\frac{dx_r}{dx}
+= C^{-3/2}\,\frac{d^2\psi_r(x_r)}{dx_r^2} \,C^{-1}\\
+&= C^{-5/2}\,\frac{d^2\psi_r(x_r)}{dx_r^2}
+\end{align*}
+
+\subsection{Ecuación de Schrödinger para las zonas I y III}
+En las zonas I y III la energía de potencial es cero.
+Substituimos este valor del potencial en la ecuación de Schrödinger,
+\ref{schro2},usando la energía reducida, \ref{reduced_e2}, y la función de
+onda reducida, \ref{reduced_psi}:
+\[
+C^{-5/2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2m}{\hbar^2}\,(\epsilon_r U_0-U_0)\,C^{-1/2}\psi_r=0
+\]
+
+Multiplicamos ambos términos por $C^{1/2}$:
+\[
+C^{-5/2}C^{1/2}\,\frac{d^2\psi_r}{dx_r^2}
+	 - \frac{2mU_0}{\hbar^2}\,(1-\epsilon_r)\,C^{-1/2}\,C^{1/2}\,\psi_r=0
+\]
+
+\[
+C^{-2}\,\frac{d^2\psi_r}{dx_r^2}
+	 - \frac{2mU_0}{\hbar^2}\,(1-\epsilon_r)\,\psi_r=0
+\]
+
+De \ref{reduced_x2}, podemos deducir que $C^{-2}=mU_0/\hbar^2$:
+\[
+\frac{mU_0}{\hbar^2}\,\frac{d^2\psi_r}{dx_r^2}
+	 - \frac{2mU_0}{\hbar^2}\,(1-\epsilon_r)\,\psi_r=0
+\]
+
+La ecuación de estado reducida para las zonas I y III es:
+\begin{equation}
+\frac{d^2\psi_r}{dx_r^2} + 2\,(1-\epsilon_r)\,\psi_r=0
+\end{equation}
+
+\subsection{Ecuación de Schrödinger para la zona II}
+En la zona II la energía potencial es cero: $U(x) = 0$.
+La ecuación de Schrödinger es:
+\[
+\label{schro2}
+\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} + E\,\psi(x) = 0
+\]
+
+\[
+C^{-5/2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2m}{\hbar^2}\,\epsilon_r\,U_0\,C^{-1/2}\psi_r=0
+\]
+
+Multiplicamos ambos términos por $C^{1/2}$:
+\[
+C^{-5/2}C^{1/2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2mU_0}{\hbar^2}\,\epsilon_r\,C^{-1/2}\,C^{1/2}\,\psi_r=0
+\]
+
+\[
+C^{-2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2mU_0}{\hbar^2}\,\epsilon_r\,\psi_r=0
+\]
+
+De \ref{reduced_x2}, podemos deducir que $C^{-2}=m|U_0|/\hbar^2$:
+\[
+\frac{mU_0}{\hbar^2}\,\frac{d^2\psi_r}{dx_r^2}
+	 + \frac{2mU_0}{\hbar^2}\,\epsilon_r\,\psi_r=0
+\]
+
+As we did in the previous subsection, we get the reduced Schrödinger equation:
+\begin{equation}
+\frac{d^2\psi_r}{dx_r^2} + 2\epsilon_r\,\psi_r=0
+\end{equation}
+

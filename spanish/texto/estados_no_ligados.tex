@@ -1,0 +1,157 @@
+% texto/estados_no_ligados.tex
+
+\chapter{Estados no ligados}
+Los estados no ligados o enlazados son aquellos en los que una partícula
+es libre, su energía total es mayor o igual a la energía potencial que rodea
+al pozo; en este caso $E\ge 0$; en términos de variables reducidas, $\epsilon_r \ge 1$.
+En un estado enlazado la partícula es libre para moverse por todo el espacio.
+
+\subsection{Primeros pasos en la resolución}
+\subsubsection{Zona I}
+\noindent
+Dominio: $x_r < 0$.
+Ecuación de Schrödinger reducida:
+$\psi''_{rI} - 2(1-\epsilon_r)\,\psi_{rI} = 0$.
+Ecuación característica usando $\psi_{rI}=e^{sx_r}$:
+\[
+s^2-2(1-\epsilon_r)=0
+\]
+\[
+s^2=2(1-\epsilon_r)
+\]
+\[
+s = \pm\sqrt{2(1-\epsilon_r)}
+\]
+
+Así:
+\[
+\psi_{rI}(x_r)
+ = C_1\,e^{-\sqrt{2\epsilon_r}\,x_r} + C_2\,e^{\sqrt{2\epsilon_r}\,x_r}
+\]
+
+La partícula puede moverse libremente por todo el espacio, por lo que la
+función de onda no tiene que anularse cuando se aleja.
+
+\subsubsection{Zona II}
+\noindent
+Dominio: $0 < x_r < l_r$.\\
+Ecuación de Schrödinger reducida: $\psi''_{rII} - 2\epsilon_r\psi_{rII}= 0$.\\
+Ecuación característica usando $\psi_{rII}=e^{sx_r}$:
+\[
+s^2+2\epsilon_r=0
+\]
+\[
+s^2=-2\epsilon_r
+\]
+\[
+s = \pm i\sqrt{2\epsilon_r}
+\]
+
+Así:
+\begin{align*}
+\psi_{rII}(x_r)
+&=C_3\,e^{-i\,\sqrt{2\epsilon_r}\,x_r} + C_4\,e^{+i\,\sqrt{2\epsilon_r}\,x_r}\\
+&=C_3\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ - i C_3\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + C_4\,\cos\left(\sqrt{2\epsilon_r}\right)\,x_r 
+ + i C_4\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)\\
+&=(C_3+C_4)\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + i (C_4-C_3)\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+\end{align*}
+
+La función de onda en la zona II es:
+\[
+\psi_{rII}(x_r)
+= A\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+ + B\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+\]
+
+\subsubsection{Zona III}
+\noindent
+Dominio: $x_r > l_r$.\\
+Ecuación de Schrödinger reducida:
+$\psi''_{rIII} - 2(1-\epsilon_r)\psi_{rIII}= 0$.\\
+Ecuación característica usando $\psi_{rIII}=e^{sx_r}$:
+\[
+s^2-2(1-\epsilon_r)=0
+\]
+\[
+s^2=2(1-\epsilon_r)
+\]
+\[
+s = \pm\sqrt{2(1-\epsilon_r)}
+\]
+
+Así:
+\[
+\psi_{rIII}(x_r)
+ = C_5\,e^{-\sqrt{2(1-\epsilon_r)}\,x_r} + C_6\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+\]
+
+\subsection{Condiciones límite}
+
+Las funciones de onda en las zonas I y II deben tender al mismo valor en
+$x_r=0$.
+\[
+\lim_{x_r\to\,0} \psi_{rI}(x_r)
+=
+\lim_{x_r\to\,0} \psi_{rII}(x_r)
+\]
+
+Así:
+\[
+C_2 = A
+\]
+
+Las derivadas de las funciones de onda en I y en II también deben tender al
+mismo valor en $x_r=0$:
+\[
+\lim_{x_r\to\,0} \psi'_{rI}(x_r)
+=
+\lim_{x_r\to\,0} \psi'_{rII}(x_r)
+\]
+
+Calculemos las derivadas de las funciones de onda en las zonas I y II:
+\begin{align*}
+\psi'_{rI} &= \frac{d\psi_{rI}(x_r)}{dx_r}
+  = C_2\,\sqrt{2(1-\epsilon_r)}\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}
+  = A\,\sqrt{2(1-\epsilon_r)}\,e^{\sqrt{2(1-\epsilon_r)}\,x_r}\\
+\psi'_{rII} &= \frac{d\psi_{rII}(x_r)}{dx_r}
+  = -A\,\sqrt{2\epsilon_r}\,\sen\left(\sqrt{2\epsilon_r}\,x_r\right)
+  + B\,\sqrt{2\epsilon_r}\,\cos\left(\sqrt{2\epsilon_r}\,x_r\right)
+\end{align*}
+
+Luego:
+\[
+A\,\sqrt{2(1-\epsilon_r)} =  B\,\sqrt{2\epsilon_r}
+\]
+\[
+B = \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,A
+\]
+
+Las funciones de onda en las zonas II y III deben tender al mismo valor en
+en el otro extremo del pozo de potencial, $x_r=l_r$:
+\[
+\lim_{x_r\to\,l_r} \psi_{rII}(x_r)
+=
+\lim_{x_r\to\,l_r} \psi_{rIII}(x_r)
+\]
+
+\[
+A\,\cos\left(l_r\sqrt{2\epsilon_r}\right)
+ + A\,\sqrt{\frac{1-\epsilon_r}{\epsilon_r}}
+   \,\sen\left(l_r\,\sqrt{2\epsilon_r}\right)
+=
+C_5\,\,e^{-l_r\sqrt{2(1-\epsilon_r}}
+\]
+
+Despejando $C_5$:
+\begin{equation}
+\label{c5_1}
+C_5 = A\,e^{l_r\sqrt{2(1-\epsilon_r)}}
+  \left\lbrace\cos\left(l_r\sqrt{2\epsilon_r}\right) 
+  + \sqrt{\frac{1-\epsilon_r}{\epsilon_r}}\,
+         \sen\left(l_r\sqrt{2\epsilon_r}\right)\right\rbrace
+\end{equation}
+
+
